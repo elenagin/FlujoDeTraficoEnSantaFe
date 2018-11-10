@@ -26,6 +26,7 @@ typedef struct def_Ventanas
   GtkWidget *VenP;//Ventana Principal
   GtkWidget *VenB;//Ventana Bienvenida
   GtkWidget *VenI;//Ventana instrucciones
+  GtkWidget *VenO;//Ventana objetivo
   GtkWidget *VenAy;//Ventana Ayuda
   GtkWidget *VenAd;//Ventana Acerca de
   GtkWidget *Error;//Ventana de error
@@ -77,7 +78,7 @@ typedef struct def_Opciones
 } tOpciones, *ptrOpciones;
 
 /*******************************************
-*   Estructura en donde se inluyen las 3   *
+*   Estructura en donde se incluyen las 3   *
 *        estructuras anteriores            *
 *******************************************/
 typedef struct def_Widgets
@@ -88,10 +89,10 @@ typedef struct def_Widgets
 } tWidgets, *ptrWidgets;
 
 void VentanaPrincipal(GtkWidget *widget, gpointer data);
-void VentanaJuego(ptrWidgets Widgets);
 void VentanaBienvenida(ptrWidgets Widgets);
 void VentanaInstrucciones(GtkWidget *widget, gpointer data);
-void CerrarJuego(GtkWidget *Widget, gpointer data);
+void VentanaObjetivo(GtkWidget *widget, gpointer data);
+void CerrarVentana(GtkWidget *Widget, gpointer data);
 
 
 #define tiposDEFINIDO

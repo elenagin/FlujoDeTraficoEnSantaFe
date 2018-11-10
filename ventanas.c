@@ -28,20 +28,20 @@ void VentanaBienvenida(ptrWidgets Widgets)
 
   vbox = gtk_vbox_new(TRUE,5);
   Widgets->SVentanas->VenB = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title(GTK_WINDOW (Widgets->SVentanas->VenB), "Pente");
+  gtk_window_set_title(GTK_WINDOW (Widgets->SVentanas->VenB), "Flujo de Trafico en Santa Fe");
   gtk_window_set_position(GTK_WINDOW(Widgets->SVentanas->VenB), GTK_WIN_POS_CENTER);
   gtk_window_set_default_size(GTK_WINDOW(Widgets->SVentanas->VenB),500,500);
   gtk_window_set_resizable(GTK_WINDOW(Widgets->SVentanas->VenB), FALSE);
   gtk_container_border_width(GTK_CONTAINER(Widgets->SVentanas->VenB),5);
 
-  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/logo.png", 500, 500, FALSE, NULL);
+  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/title.png", 500, 500, FALSE, NULL);
   imagen = gtk_image_new_from_pixbuf(pixbuf);
   boton= gtk_button_new();
   
   gtk_widget_show (imagen);
 
-  gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(VentanaInstrucciones), Widgets);
-  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenB),"destroy",G_CALLBACK(CerrarJuego), Widgets);
+  gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(VentanaObjetivo), Widgets);
+  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenB),"destroy",G_CALLBACK(CerrarVentana), Widgets);
   gtk_container_add(GTK_CONTAINER(Widgets->SVentanas->VenB), boton);
   gtk_container_add(GTK_CONTAINER(boton), vbox);
   gtk_container_add(GTK_CONTAINER(vbox), GTK_WIDGET(imagen));
@@ -49,6 +49,46 @@ void VentanaBienvenida(ptrWidgets Widgets)
   gtk_widget_show_all(Widgets->SVentanas->VenB);
 
 }//VentanaBienvenida
+
+/**
+ * Función VentanaObjetivo: Se establecen todos los 
+ * requerimientos para poder abrir la ventana de instrucciones
+ * desde una imagen e introducir el juego de pente.
+ * Regresa ventana en pantalla.
+ *@Elena
+ *@Param GtkWidget *Widget El botón apuntador
+ *@Param gpointer data  Apuntador a todas las estructuras
+ */
+void VentanaObjetivo(GtkWidget *widget, gpointer data)
+{
+  GtkWidget *imagen, *boton, *vbox;
+  GdkPixbuf *pixbuf; 
+  ptrWidgets Widgets=(ptrWidgets)data;
+  
+  gtk_widget_hide(Widgets->SVentanas->VenB);
+  vbox = gtk_vbox_new(TRUE,5);
+
+  Widgets->SVentanas->VenO = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title(GTK_WINDOW (Widgets->SVentanas->VenO), "Flujo de Trafico en Santa Fe");
+  gtk_window_set_position(GTK_WINDOW(Widgets->SVentanas->VenO), GTK_WIN_POS_CENTER);
+  gtk_window_set_default_size(GTK_WINDOW(Widgets->SVentanas->VenO),500,500);
+  gtk_window_set_resizable(GTK_WINDOW(Widgets->SVentanas->VenO), FALSE);
+  gtk_container_border_width(GTK_CONTAINER(Widgets->SVentanas->VenO),5);
+
+  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/objective.png", 500, 500, FALSE, NULL);
+  imagen = gtk_image_new_from_pixbuf(pixbuf);
+  boton= gtk_button_new();
+  
+  gtk_widget_show (imagen);
+
+  gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(VentanaInstrucciones), Widgets);
+  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenO),"destroy",G_CALLBACK(CerrarVentana), Widgets);
+  gtk_container_add(GTK_CONTAINER(Widgets->SVentanas->VenO), boton);
+  gtk_container_add(GTK_CONTAINER(boton), vbox);
+  gtk_container_add(GTK_CONTAINER(vbox), GTK_WIDGET(imagen));
+  
+  gtk_widget_show_all(Widgets->SVentanas->VenO);
+}//VentanaObjetivo
 
 /**
  * Función VentanaInstrucciones: Se establecen todos los 
@@ -65,33 +105,74 @@ void VentanaInstrucciones(GtkWidget *widget, gpointer data)
   GdkPixbuf *pixbuf; 
   ptrWidgets Widgets=(ptrWidgets)data;
   
-  gtk_widget_hide(Widgets->SVentanas->VenB);
+  gtk_widget_hide(Widgets->SVentanas->VenO);
   vbox = gtk_vbox_new(TRUE,5);
 
   Widgets->SVentanas->VenI = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title(GTK_WINDOW (Widgets->SVentanas->VenI), "Pente");
+  gtk_window_set_title(GTK_WINDOW (Widgets->SVentanas->VenI), "Flujo de Trafico en Santa Fe");
   gtk_window_set_position(GTK_WINDOW(Widgets->SVentanas->VenI), GTK_WIN_POS_CENTER);
   gtk_window_set_default_size(GTK_WINDOW(Widgets->SVentanas->VenI),500,500);
   gtk_window_set_resizable(GTK_WINDOW(Widgets->SVentanas->VenI), FALSE);
   gtk_container_border_width(GTK_CONTAINER(Widgets->SVentanas->VenI),5);
 
-  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/instrucciones.png", 500, 500, FALSE, NULL);
+  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/instructions.png", 500, 500, FALSE, NULL);
   imagen = gtk_image_new_from_pixbuf(pixbuf);
   boton= gtk_button_new();
   
   gtk_widget_show (imagen);
 
-  gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(CerrarJuego), Widgets);
-  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenI),"destroy",G_CALLBACK(CerrarJuego), Widgets);
+  gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(VentanaPrincipal), Widgets);
+  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenI),"destroy",G_CALLBACK(CerrarVentana), Widgets);
   gtk_container_add(GTK_CONTAINER(Widgets->SVentanas->VenI), boton);
   gtk_container_add(GTK_CONTAINER(boton), vbox);
   gtk_container_add(GTK_CONTAINER(vbox), GTK_WIDGET(imagen));
   
   gtk_widget_show_all(Widgets->SVentanas->VenI);
-}//VentanaInstrucciones
+}//VentanaIntrucciones
 
-void CerrarJuego(GtkWidget *Widget, gpointer data)
+/**
+ * Función VentanaInstrucciones: Se establecen todos los 
+ * requerimientos para poder abrir la ventana de instrucciones
+ * desde una imagen e introducir el juego de pente.
+ * Regresa ventana en pantalla.
+ *@Elena
+ *@Param GtkWidget *Widget El botón apuntador
+ *@Param gpointer data  Apuntador a todas las estructuras
+ */
+void VentanaPrincipal(GtkWidget *widget, gpointer data)
+{
+  GtkWidget *imagen, *boton, *vbox;
+  GdkPixbuf *pixbuf; 
+  ptrWidgets Widgets=(ptrWidgets)data;
+  
+  gtk_widget_hide(Widgets->SVentanas->VenI);
+  vbox = gtk_vbox_new(TRUE,5);
+
+  Widgets->SVentanas->VenP = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title(GTK_WINDOW (Widgets->SVentanas->VenP), "Flujo de Trafico en Santa Fe");
+  gtk_window_set_position(GTK_WINDOW(Widgets->SVentanas->VenP), GTK_WIN_POS_CENTER);
+  gtk_window_set_default_size(GTK_WINDOW(Widgets->SVentanas->VenP),500,500);
+  gtk_window_set_resizable(GTK_WINDOW(Widgets->SVentanas->VenP), FALSE);
+  gtk_container_border_width(GTK_CONTAINER(Widgets->SVentanas->VenP),5);
+
+  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/title.png", 500, 500, FALSE, NULL);
+  imagen = gtk_image_new_from_pixbuf(pixbuf);
+  boton= gtk_button_new();
+  
+  gtk_widget_show (imagen);
+
+  gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(CerrarVentana), Widgets);
+  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenP),"destroy",G_CALLBACK(CerrarVentana), Widgets);
+  gtk_container_add(GTK_CONTAINER(Widgets->SVentanas->VenP), boton);
+  gtk_container_add(GTK_CONTAINER(boton), vbox);
+  gtk_container_add(GTK_CONTAINER(vbox), GTK_WIDGET(imagen));
+  
+  gtk_widget_show_all(Widgets->SVentanas->VenP);
+}//VentanaPrincipal
+
+
+void CerrarVentana(GtkWidget *Widget, gpointer data)
 {
   ptrWidgets Widgets=(ptrWidgets)data;
   gtk_main_quit();
-}//CerrarJuego2
+}//CerrarVentana
