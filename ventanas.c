@@ -11,7 +11,6 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
 #include "tipos.h"
-#include "senales.h"
 #include "ventanas.h"
 
 /**
@@ -42,7 +41,7 @@ void VentanaBienvenida(ptrWidgets Widgets)
   gtk_widget_show (imagen);
 
   gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(VentanaInstrucciones), Widgets);
-  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenB),"destroy","quit", Widgets);
+  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenB),"destroy",G_CALLBACK(CerrarJuego), Widgets);
   gtk_container_add(GTK_CONTAINER(Widgets->SVentanas->VenB), boton);
   gtk_container_add(GTK_CONTAINER(boton), vbox);
   gtk_container_add(GTK_CONTAINER(vbox), GTK_WIDGET(imagen));
@@ -82,11 +81,17 @@ void VentanaInstrucciones(GtkWidget *widget, gpointer data)
   
   gtk_widget_show (imagen);
 
-  gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(VentanaPrincipal), Widgets);
-  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenI),"destroy",, Widgets);
+  gtk_signal_connect(GTK_OBJECT(boton),"clicked",GTK_SIGNAL_FUNC(CerrarJuego), Widgets);
+  gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenI),"destroy",G_CALLBACK(CerrarJuego), Widgets);
   gtk_container_add(GTK_CONTAINER(Widgets->SVentanas->VenI), boton);
   gtk_container_add(GTK_CONTAINER(boton), vbox);
   gtk_container_add(GTK_CONTAINER(vbox), GTK_WIDGET(imagen));
   
   gtk_widget_show_all(Widgets->SVentanas->VenI);
 }//VentanaInstrucciones
+
+void CerrarJuego(GtkWidget *Widget, gpointer data)
+{
+  ptrWidgets Widgets=(ptrWidgets)data;
+  gtk_main_quit();
+}//CerrarJuego2

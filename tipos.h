@@ -16,6 +16,7 @@
 
 #ifndef tiposDEFINIDO
 
+
 /*******************************************
 *   Estructura en donde se inluyen todos   *
 *   los elementos a ocupar en las ventanas *
@@ -85,6 +86,12 @@ typedef struct def_Widgets
   ptrOpciones SOpciones;
   ptrVentanas SVentanas;
 } tWidgets, *ptrWidgets;
+
+void VentanaPrincipal(GtkWidget *widget, gpointer data);
+void VentanaJuego(ptrWidgets Widgets);
+void VentanaBienvenida(ptrWidgets Widgets);
+void VentanaInstrucciones(GtkWidget *widget, gpointer data);
+void CerrarJuego(GtkWidget *Widget, gpointer data);
 
 
 #define tiposDEFINIDO

@@ -11,7 +11,6 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
 #include "tipos.h"
-#include "senales.h"
 #include "ventanas.h"
 
 /**
@@ -32,6 +31,5 @@ int main(int argc, char *argv[])
   Widgets->SVentanas=(ptrVentanas)malloc(sizeof(tVentanas));
 
   VentanaBienvenida(Widgets);//Se crea la ventana de presentacion y se espera a que se le de aceptar
-  VentanaJuego(Widgets);//Se crea la ventana de nueva partida
   gtk_main();/*funcion inicio iterada*/
 }//main
