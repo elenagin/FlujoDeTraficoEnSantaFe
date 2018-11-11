@@ -30,16 +30,6 @@ typedef struct def_Ventanas
   GtkWidget *VenAy;//Ventana Ayuda
   GtkWidget *VenAd;//Ventana Acerca de
   GtkWidget *Error;//Ventana de error
-  GtkWidget *VenGan; //Ventana ganador
-  GtkWidget *M2;//Mensaje 2
-  GtkWidget *M3;//Mensaje 3
-  GtkWidget *Des1;//Diálogo 1
-  GtkWidget *Des2;//Diálogo 2
-  GtkWidget *VenJ;//Ventana jugar
-  GtkWidget *VenA;//Ventana Abrir
-  GtkWidget *VenG;//Ventana Guardar
-  GtkWidget *VentanaErrorArchivos;
-  GtkWidget *VentanaEmpate;
 } tVentanas, *ptrVentanas;
 
 /*******************************************
@@ -87,12 +77,6 @@ typedef struct def_Widgets
   ptrOpciones SOpciones;
   ptrVentanas SVentanas;
 } tWidgets, *ptrWidgets;
-
-void VentanaPrincipal(GtkWidget *widget, gpointer data);
-void VentanaBienvenida(ptrWidgets Widgets);
-void VentanaInstrucciones(GtkWidget *widget, gpointer data);
-void VentanaObjetivo(GtkWidget *widget, gpointer data);
-void CerrarVentana(GtkWidget *Widget, gpointer data);
 
 
 #define tiposDEFINIDO

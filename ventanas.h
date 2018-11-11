@@ -16,8 +16,10 @@
 void VentanaPrincipal(GtkWidget *widget, gpointer data);
 void VentanaBienvenida(ptrWidgets Widgets);
 void VentanaInstrucciones(GtkWidget *widget, gpointer data);
-
-
-
+void VentanaInstrucciones2(GtkWidget *widget, gpointer data);
+void VentanaObjetivo(GtkWidget *widget, gpointer data);
+void VentanaObjetivo2(GtkWidget *widget, gpointer data);
+void CerrarVentana(GtkWidget *Widget, gpointer data);
+void Esconder(GtkWidget *Widget, gpointer data);
 #define ventanasDEFINIDO
 #endif
