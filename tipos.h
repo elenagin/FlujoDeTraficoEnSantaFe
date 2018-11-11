@@ -60,7 +60,7 @@ typedef struct def_Tablero
 *******************************************/
 typedef struct def_Opciones
 {
-  GtkWidget *CHJ[3];//Caja Horizontal del Jugador
+  GtkWidget *CH[3];//Caja Horizontal
   GSList *Grupo;//Grupo de los radiobuttons
   GtkWidget *Entry[2];//Entries de los nombres de jugadores
   const gchar *Jugadores[2];//Lugar donde se guarda el nombre del jugador

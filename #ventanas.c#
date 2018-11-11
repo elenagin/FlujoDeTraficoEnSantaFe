@@ -190,6 +190,7 @@ void VentanaPrincipal(GtkWidget *widget, gpointer data)
   gtk_box_pack_start_defaults (GTK_BOX(CajaGrande),Widgets->SOpciones->CH[1]);
   gtk_box_pack_start_defaults (GTK_BOX(Widgets->SOpciones->CH[1]),botonOK);
   gtk_signal_connect(GTK_OBJECT(Widgets->SVentanas->VenP),"destroy",G_CALLBACK(CerrarVentana), Widgets);
+  
   gtk_widget_show_all(Widgets->SVentanas->VenP);
 
 }//VentanaPrincipal
