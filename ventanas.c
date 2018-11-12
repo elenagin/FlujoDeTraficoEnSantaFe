@@ -208,7 +208,7 @@ void VentanaObjetivo2(GtkWidget *widget, gpointer data)
   gtk_container_border_width(GTK_CONTAINER(Widgets->SVentanas->VenO),5);
 
   //Creación de imagen
-  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/objective.png", 300, 300, FALSE, NULL);
+  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/objective2.png", 300, 300, FALSE, NULL);
   imagen = gtk_image_new_from_pixbuf(pixbuf);
   gtk_widget_show (imagen);
 
@@ -231,7 +231,7 @@ void VentanaInstrucciones2(GtkWidget *widget, gpointer data)
   gtk_window_set_resizable(GTK_WINDOW(Widgets->SVentanas->VenI), FALSE);
   gtk_container_border_width(GTK_CONTAINER(Widgets->SVentanas->VenI),5);
 
-  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/instructions.png", 300, 300, FALSE, NULL);
+  pixbuf = gdk_pixbuf_new_from_file_at_scale("Archivos/instructions2.png", 300, 300, FALSE, NULL);
   imagen = gtk_image_new_from_pixbuf(pixbuf);  
   gtk_widget_show (imagen);
 
